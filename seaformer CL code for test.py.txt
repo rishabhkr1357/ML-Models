@@ -1,0 +1,19 @@
+
+
+python /workspace/SeaFormer/seaformer-seg/tools/test.py /workspace/SeaFormer/seaformer-seg/local_configs/seaformer/seaformer_tiny_512x512_160k_2x8_ade20k.py /workspace/SeaFormer/seaformer-seg/demo/SeaFormer_T_bs16_35.0.pth --eval mIoU
+
+
+
+
+python /workspace/SeaFormer/seaformer-seg/tools/test.py /workspace/SeaFormer/seaformer-seg/local_configs/seaformer/seaformer_base_512x512_160k_2x8_ade20k.py /workspace/SeaFormer/seaformer-seg/demo/SeaFormer_B_bs16_41.2.pth --eval mIoU
+
+
+
+
+python /workspace/SeaFormer/seaformer-seg/tools/test.py /workspace/SeaFormer/seaformer-seg/local_configs/seaformer/seaformer_small_512x512_160k_2x8_ade20k.py /workspace/SeaFormer/seaformer-seg/demo/SeaFormer_S_bs16_38.9.pth --eval mIoU
+
+
+python /workspace/SeaFormer/seaformer-seg/tools/train.py /workspace/SeaFormer/seaformer-seg/local_configs/seaformer/seaformer_small_512x512_160k_2x8_ade20k.py
+
+
+python -m torch.distributed.launch --nproc_per_node=2 /workspace/SeaFormer/seaformer-seg/tools/train.py /workspace/SeaFormer/seaformer-seg/local_configs/seaformer/seaformer_large_512x512_160k_4x8_ade20k.py --launcher pytorch
